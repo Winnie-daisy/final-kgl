@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manager Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <header>
+    <h1>Manager Dashboard</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#sales-overview">Sales Overview</a></li>
+      <li><a href="#edit-prices-stock">Edit Prices & Stock</a></li>
+      <li><a href="#enter-purchases">Enter Purchases</a></li>
+      <li><a href="#view-users">View Users</a></li>
+      <li><a href="#monthly-overview">Monthly Sales</a></li>
+      <li><a href="#account-settings">Account Settings</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="sales-overview">
+      <h2>Sales Overview</h2>
+      <table id="salesTable">
+        <tr>
+          <th>Branch</th>
+          <th>Sales</th>
+          <th>Top Products</th>
+        </tr>
+        <!-- Dynamic content will be added here -->
+      </table>
+    </section>
+
+    <section id="edit-prices-stock">
+      <h2>Edit Prices & Stock</h2>
+      <form id="editForm">
+        <label for="itemName">Item Name:</label>
+        <input type="text" id="itemName" placeholder="Enter Item Name" required>
+        
+        <label for="itemPrice">New Price:</label>
+        <input type="number" id="itemPrice" placeholder="Enter Price" required>
+        
+        <label for="itemStock">Stock Quantity:</label>
+        <input type="number" id="itemStock" placeholder="Enter Quantity" required>
+        
+        <button type="button" onclick="updateStock()">Update</button>
+      </form>
+    </section>
+
+    <section id="enter-purchases">
+      <h2>Enter Purchases</h2>
+      <form id="purchaseForm">
+        <label for="purchaseItem">Item Name:</label>
+        <input type="text" id="purchaseItem" placeholder="Enter Item Name" required>
+        
+        <label for="purchaseQuantity">Quantity:</label>
+        <input type="number" id="purchaseQuantity" placeholder="Enter Quantity" required>
+
+        <label for="purchaseItem">Item Name:</label>
+        <input type="text" id="purchaseItem" placeholder="Enter Item Name" required>
+        
+        <label for="purchaseQuantity">Quantity:</label>
+        <input type="number" id="purchaseQuantity" placeholder="Enter Quantity" required>
+        
+        <label for="branch">Branch:</label>
+        <select id="branch">
+          <option value="maganjoBranch">Maganjo Branch</option>
+          <option value="matuggaBranch">Matugga Branch</option>
+        </select>
+        
+        <button type="button" onclick="addPurchase()">Add Purchase</button>
+      </form>
+    </section>
+
+    <section id="view-users">
+      <h2>View Users</h2>
+      <ul id="userList">
+        <!-- Dynamic content will be added here -->
+      </ul>
+    </section>
+
+    <section id="monthly-overview">
+      <h2>Monthly Sales Overview</h2>
+      <p id="monthlySummary"></p>
+    </section>
+
+    <section id="account-settings">
+      <h2>Account Settings</h2>
+      <form id="accountForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Update Username" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Update Password" required>
+        
+        <button type="button" onclick="saveAccountSettings()">Save Changes</button>
+      </form>
+      <button type="button" onclick="">logout</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; Manager Dashboard</p>
+  </footer>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
