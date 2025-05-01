@@ -1,0 +1,125 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Homepage
+  link(rel='stylesheet' href='css/index.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css' integrity='sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==' crossorigin='anonymous' referrerpolicy='no-referrer')
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7' crossorigin='anonymous')
+header
+  nav
+    ul
+      li
+        a.hover-text(href='#home') Home
+      li
+        a.hover-text(href='#products') Products
+      li
+        a.hover-text(href='#login') Login
+      li
+        a.hover-text(href='/signup') Accounts
+h2 Welcome to Karibu Groceries Limited
+main
+  section.intro
+    .clearfix
+      img.col-md-6.float-md-end.mb-3.ms-md-3(src='img/index.jpg' alt='...')
+      p
+        | Karibu Grocery Limited is your one best store 
+        br
+        |                      here to give you a better experienceb 
+        br
+        |                       with your grocery store today!
+  section.branches
+    p
+      i Find us at our branches
+    .branch-card
+      h2 Maganjo Branch
+      p
+        | Find us at plot 238 maganjjo-kisseka roundabout. Call us on 0777 777 777 for more information.
+    .branch-card
+      h2 Matugga Branch
+      p
+        | Located at plot 17 matugga trading centre. Call us on 0788 888 888 for more information.
+  section#categories.catergories
+    h2.heading Top Catergories
+    .cards-container
+      .card
+        img(src='img/grains.jpg' alt='' style='height: 300px;')
+        .title Grains
+      .card
+        img(src='img/cereals.jpg' alt='' style='height: 300px;')
+        .title Cereals
+      .card
+        img(src='img/legumez.jpg' alt='' style='height: 300px;')
+        .title Legumes
+  br
+  br
+  br
+  br
+  section#products.products
+    h2.heading Our Products
+    .cards-container
+      .card
+        img(src='img/beans.jpg' alt='' style='height: 200px;')
+        .title Beans
+      .card
+        img(src='img/gnuts.jpg' alt='' style='height: 200px;')
+        .title Gnuts
+      .card
+        img(src='img/maize.jpg' alt='' style='height: 200px;')
+        .title Maize
+      .card
+        img(src='img/cowpeas.jpg' alt='' style='height: 200px;')
+        .title Cowpeas
+      .card
+        img(src='img/soyabeans.jpg' alt='' style='height: 200px;')
+        .title Soyabeans
+  br
+  br
+  br
+  .button
+    button.login(href='/signup') Login
+footer.footer
+  #contact.footer-content
+    h2 Contact Us
+    .container.text-right
+      .row
+        .col
+          p
+            i.fa-solid.fa-envelope
+            |  Email: 
+            br
+            |  karibugrocltd@gmail.com 
+            br
+            | karibultd@yahoo.com
+        .col
+          i.fa-solid.fa-phone
+          |   Phone: 
+          br
+          |  +256 123 456 789 
+          br
+          | +256 789 012 345
+          p
+        .col
+          p
+            | Follow us on : 
+            br
+            br
+            i.fa-brands.fa-facebook
+            a(href='https://www.facebook.com' target='_blank') Karibu groceryltd
+            | , 
+            br
+            br
+            i.fa-brands.fa-x-twitter
+            a(href='https://www.twitter.com' target='_blank') kglofficia
+            | , 
+            br
+            br
+            i.fa-brands.fa-square-instagram
+            a(href='https://www.instagram.com' target='_blank') Karibu@gl
+          br
+          br
+          br
+  p &copy; 2023 Karibu Grocery Limited. All rights reserved.
+script(src='js/index.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js' integrity='sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==' crossorigin='anonymous' referrerpolicy='no-referrer')
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js' integrity='sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq' crossorigin='anonymous')

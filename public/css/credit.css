@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #f9f9f9;
+  }
+  table, th, td {
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 10px;
+  }
+  table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  table th {
+    background-color: #2c3e50;
+    color: white;
+  }
+  .form-popup {
+    display: none;
+    border: 1px solid #ccc;
+    padding: 20px;
+    background: #f9f9f9;
+    position: relative;
+    width: 550px;
+    height: auto;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+  .form-popup input, .form-popup select {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+  }
+  .container{
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+
+  }
+  .container button {
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .container button:hover {
+    background-color: #16a085;
+  }
+
+  button {
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #16a085;
+  }
+
+  .error {
+    color: red;
+    font-size: 0.9em;
+  }

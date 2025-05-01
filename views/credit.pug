@@ -1,0 +1,45 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  title Credit Sales Entry
+  link(rel='stylesheet' href='css/credit.css')
+.container
+  button(onclick='openForm()') Record Credit Sale
+  #salesForm.form-popup
+    h3 Register Credit Sale
+    form#creditSaleForm
+      input#buyerName(type='text' name='buyerName' placeholder='Name of Buyer' required='')
+      input#nationalId(type='text' name='nationalId' placeholder='National ID (e.g., CF1234567890ABCDE)' required='')
+      input#location(type='text' name='location' placeholder='Location' required='')
+      input#contacts(type='text' name='contact' placeholder='Contacts (e.g., +256712345678)' required='')
+      input#amountDue(type='text' name='amoutDue' placeholder='Amount Due (UGX)' required='')
+      input#salesAgent(type='text' name='saleAgent' placeholder='Sales Agent Name' required='')
+      input#dueDate(type='date' name='dueDate' required='')
+      input#produceName(type='text' name='produceName' placeholder='Produce Name' required='')
+      input#produceType(type='text' name='produceType' placeholder='Type of Produce' required='')
+      input#tonnage(type='text' name='tonnage' placeholder='Tonnage' required='')
+      input#dispatchDate(type='date' name='dispatchDate' required='')
+      button(type='submit') Save
+      button(type='button' onclick='closeForm()') Cancel
+      p#errorMsg.error
+table#salesTable
+  thead
+    tr
+      th Buyer
+      th National ID
+      th Location
+      th Contacts
+      th Amount Due
+      th Sales Agent
+      th Due Date
+      th Produce
+      th Type
+      th Tonnage
+      th Dispatch Date
+      th Actions
+  tbody
+    // Sales records appear here
+br
+br
+button(onclick='goBack()') Preview
+script(src='js/credit.js')

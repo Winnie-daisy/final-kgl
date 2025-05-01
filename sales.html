@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales</title>
+    <link rel="stylesheet" href="sales.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sales Records</h1>
+        <button id="recordSaleBtn">Record Sale</button>
+        <table id="salesTable">
+            <thead>
+                <tr>
+                    <th>Produce Name</th>
+                    <th>Tonnage (kg)</th>
+                    <th>Amount</th>
+                    <th>Buyer's Name</th>
+                    <th>Date & Time</th>
+                    <th>Agent Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Sales records will be added here dynamically -->
+            </tbody>
+        </table> <br><br>
+        <button  onclick="goBack()">Preview</button>
+    </div>
+
+    <!-- Sales Form Modal -->
+    <div id="saleFormModal" class="modal">
+        <div class="modal-content">
+            <h2>Record Sale</h2>
+            <form id="saleForm">
+                <label for="produceName">Produce Name</label>
+                <input type="text" id="produceName" required>
+                
+                <label for="tonnage">Tonnage (kg)</label>
+                <input type="number" id="tonnage" required>
+                
+                <label for="amount">Amount</label>
+                <input type="number" id="amount" required>
+                
+                <label for="buyerName">Buyer's Name</label>
+                <input type="text" id="buyerName" required>
+                
+                <label for="dateTime">Date & Time</label>
+                <input type="datetime-local" id="dateTime" required>
+                
+                <label for="agentName">Agent Name</label>
+                <input type="text" id="agentName" required>
+                
+                <button type="submit">Save</button>
+                <button type="button" id="cancelBtn">Cancel</button>
+            </form>
+        </div>
+    </div>
+    <br><br><br>
+    
+
+    <script src="sales.js"></script>
+</body>
+</html>

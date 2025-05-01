@@ -1,0 +1,51 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Sales
+  link(rel='stylesheet' href='css/sales.css')
+.container
+  h1 Sales Records
+  button#recordSaleBtn Record Sale
+  table#salesTable
+    thead
+      tr
+        th Produce Name
+        th Tonnage (kg)
+        th Amount
+        th Buyer&apos;s Name
+        th Date &amp; Time
+        th Agent Name
+        th Branch Name
+        th Actions
+    tbody
+      // Sales records will be added here dynamically
+  br
+  br
+  button(onclick='goBack()') Preview
+// Sales Form Modal
+#saleFormModal.modal
+  .modal-content
+    h2 Record Sale
+    form#saleForm(action='/sales' method='POST')
+      label(for='produceName') Produce Name
+      input#produceName(type='text' name='produceName' required='')
+      label(for='tonnage') Tonnage (kg)
+      input#tonnage(type='number' name='tonnage' required='')
+      label(for='amount') Amount
+      input#amount(type='number' name='amount' required='')
+      label(for='buyerName') Buyer&apos;s Name
+      input#buyerName(type='text' name='buyerName' required='')
+      label(for='dateTime') Date &amp; Time
+      input#dateTime(type='datetime-local' name='dateTime' required='')
+      label(for='agentName') Agent Name
+      input#agentName(type='text' name='agentName' required='')
+      label(for='branchName') Branch Name
+      input#branchName(type='text' name='branchName' required='')
+      button#recordSaleBtn(type='submit') Save
+      button#cancelBtn(type='button') Cancel
+br
+br
+br
+script(src='js/sales.js')
+| 

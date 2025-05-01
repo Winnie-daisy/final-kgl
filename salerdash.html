@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salers Dashboard</title>
+  <link rel="stylesheet" href="admindash.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header class="header">
+        <h1>Karibu Groceries Limited</h1>
+        <input type="text" class="search-bar" placeholder="Search...">
+      </header>
+
+  <div class="dashboard">
+    <aside class="sidebar">
+      <h2>Admin Panel</h2>
+      <ul id="sidebar">
+        <li> <i class="fa-solid fa-table-columns"></i> <a data-feature="dashboard">Dashboard</a></li>
+        <li> <i class="fa-solid fa-users"></i> <a data-feature="users">Users</a></li>
+        <li> <i class="fa-solid fa-cart-shopping"></i> <a href="sales.html">Sales</a></li>
+        <li> <i class="fa-solid fa-scale-balanced"></i> <a href="credit.html">Credit Sales</a></li>
+        <li> <i class="fa-solid fa-arrow-right-from-bracket"></i> <a data-feature="logout">Logout</a></li>
+      </ul>
+    </aside>
+    <main class="main-content" id="content">
+      <header class="header">
+        <h1>Welcome, Director</h1>
+      </header>
+      <section class="stats">
+        <div class="stat-box" id="user-stat">
+          <h3>Users</h3>
+          <p>120</p>
+        </div>
+        <div class="stat-box" id="user-stat">
+          <h3>Sales</h3>
+          <p>$5,000</p>
+        </div>
+        <div class="stat-box" id="user-stat">
+          <h3>Orders</h3>
+          <p>34</p>
+        </div>
+        <div class="stat-box" id="user-stat">
+            <h3>Users</h3>
+            <p>Loading...</p>
+          </div>
+      </section>
+    </main>
+  </div>
+  <footer>
+    <p>&copy; Sales Agent Dashboard</p>
+  </footer>
+</body>
+<script src="admindash.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</html>

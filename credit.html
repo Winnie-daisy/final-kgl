@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Credit Sales Entry</title>
+  <link rel="stylesheet" href="credit.css">
+</head>
+<body>
+ <div class="container">
+  <button onclick="openForm()">Record Credit Sale</button>
+
+  <div class="form-popup" id="salesForm">
+    <h3>Register Credit Sale</h3>
+    <form id="creditSaleForm">
+      <input type="text" id="buyerName" placeholder="Name of Buyer" required />
+      <input type="text" id="nationalId" placeholder="National ID (e.g., CF1234567890ABCDE)" required />
+      <input type="text" id="location" placeholder="Location" required />
+      <input type="text" id="contacts" placeholder="Contacts (e.g., +256712345678)" required />
+      <input type="text" id="amountDue" placeholder="Amount Due (UGX)" required />
+      <input type="text" id="salesAgent" placeholder="Sales Agent Name" required />
+      <input type="date" id="dueDate" required />
+      <input type="text" id="produceName" placeholder="Produce Name" required />
+      <input type="text" id="produceType" placeholder="Type of Produce" required />
+      <input type="text" id="tonnage" placeholder="Tonnage" required />
+      <input type="date" id="dispatchDate" required />
+      <button type="submit">Save</button>
+      <button type="button" onclick="closeForm()">Cancel</button>
+      <p class="error" id="errorMsg"></p>
+    </form>
+  </div>
+ </div>
+  <table id="salesTable">
+    <thead>
+      <tr>
+        <th>Buyer</th>
+        <th>National ID</th>
+        <th>Location</th>
+        <th>Contacts</th>
+        <th>Amount Due</th>
+        <th>Sales Agent</th>
+        <th>Due Date</th>
+        <th>Produce</th>
+        <th>Type</th>
+        <th>Tonnage</th>
+        <th>Dispatch Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Sales records appear here -->
+    </tbody>
+  </table> <br><br>
+
+  <button onclick="goBack()">Preview</button>
+
+  <script src="credit.js"></script>
+
+</body>
+</html>
