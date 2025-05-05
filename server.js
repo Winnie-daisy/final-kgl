@@ -9,6 +9,9 @@ require("dotenv").config();
 
 // Import user model (used for passport config)
 const Signup = require("./models/Signup");
+const Sale = require("./models/Sale");
+const Purchase = require("./models/Purchase");
+const Credit = require("./models/Credit");
 
 // 2. Instantiations
 const app = express();
@@ -33,6 +36,7 @@ app.set("views", path.join(__dirname, "views"));
 // 5. Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.json());
 
 // ✅ Proper session middleware setup
 app.use(session({

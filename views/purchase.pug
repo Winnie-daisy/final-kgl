@@ -1,191 +1,184 @@
 doctype html
-head
-  meta(charset='UTF-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title dashboard
-  style.
-    body {
-    font-family: Arial,  sans-serif;
-    padding: 0;
-    margin: 0;
-    background-color: #f4f4f4;
-    }
-    .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    }
-    .container button {
-    background-color: #1abc9c;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    }
-    .container button:hover {
-    background-color: #16a085;
-    }
-    .container form {
-    display: none;
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    position: relative ;
-    z-index: 10;
-    border: #f9f9f9;
-    border: 1px solid #ccc;
-    width: 550px;
-    height: auto;
-    top: 10%;
-    left: 50%;
-    }
-    .purchaseTable table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    }
-    .purchaseTable th, .purchaseTable td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: centre;
-    }
-    table th {
-    background-color: #2c3e50;
-    color: white;
-    }
-    form input, form select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    display: block;
-    }
-    button {
-    background-color: #1abc9c;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    }
-    button:hover {
-    background-color: #16a085;
-    }
-.container
-  button(onclick='openPurchaseForm()') Record Purchase
-  h1 Purchase Record
-  form#purchaseForm(action='')
-    input#produceName(type='text' name='produceName' placeholder='Name of Produce' required='')
-    input#produceType(type='text' name='produceType' placeholder='Type of Produce' required='')
-    input#purchaseDate(type='date' name='date'  required='')
-    input#produceTime(type='time' name='time' required='')
-    input#tonnageKgs(type='text' name='tonnage' placeholder='Tonnage in Kgs' required='')
-    input#costUgx(type='text' name='cost' placeholder='Cost (UGX)' required='')
-    input#dealerName(type='text' name='dealerName' placeholder='Dealer Name' required='')
-    select#branchName(name='branchName' required='')
-      option(value='') -- Select Branch --
-      option(value='maganjjo') Maganjjo
-      option(value='mattuga') Matugga
-    input#dealerContact(type='text' name='contact' placeholder='Dealer Contact (e.g. +256712345678)' required='')
-    input#sellingPrice(type='text' name='sellingPrice' placeholder='Price to be Sold At' required='')
-    button(type='submit') Submit
-    button(type='button' onclick='closePurchaseForm()') Cancel
-    p#purchaseErrorMsg.error
-.purchaseTable
-  table#salesTable
-    thead
-      tr
-        th Produce
-        th Type
-        th Date
-        th Time
-        th Tonnage (kg)
-        th Cost (UGX)
-        th Dealer
-        th Branch
-        th Contact
-        th Selling Price
-    tbody
-      // Sales records appear here
-br
-br
-br
-button(onclick='goBack()') Preview
-script.
-  const purchaseForm = document.getElementById("producePurchaseForm");
-  const purchaseTableBody = document.querySelector("#purchaseTable tbody");
-  const purchaseError = document.getElementById("purchaseErrorMsg");
-  function openPurchaseForm() {
-  document.getElementById("purchaseForm").style.display = "block";
-  }
-  function closePurchaseForm() {
-  document.getElementById("purchaseForm").style.display = "none";
-  purchaseForm.reset();
-  purchaseError.textContent = "";
-  }
-  purchaseForm.addEventListener("submit", function(event) {
-  event.preventDefault();
-  const produceName = purchaseForm.produceName.value.trim();
-  const produceType = purchaseForm.produceType.value.trim();
-  const purchaseDate = purchaseForm.purchaseDate.value;
-  const produceTime = purchaseForm.produceTime.value;
-  const tonnageKgs = purchaseForm.tonnageKgs.value.trim();
-  const costUgx = purchaseForm.costUgx.value.trim();
-  const dealerName = purchaseForm.dealerName.value.trim();
-  const branchName = purchaseForm.branchName.value;
-  const dealerContact = purchaseForm.dealerContact.value.trim();
-  const sellingPrice = purchaseForm.sellingPrice.value.trim();
-  const phoneRegex = /^\\+256\d{9}$/;
-  const alphaRegex = /^[a-zA-Z\\s]+$/;
-  const alphanumRegex = /^[a-zA-Z0-9\\s]+$/;
-  if (!alphanumRegex.test(produceName)) {
-  return showPurchaseError("Produce name must be alphanumeric.");
-  }
-  if (produceType.length < 2 || !alphaRegex.test(produceType)) {
-  return showPurchaseError("Type of produce must be at least 2 characters and alphabetic.");
-  }
-  if (!purchaseDate || !produceTime) {
-  return showPurchaseError("Date and time are required.");
-  }
-  if (tonnageKgs.length < 3 || isNaN(tonnageKgs)) {
-  return showPurchaseError("Tonnage must be numeric and at least 3 digits.");
-  }
-  if (costUgx.length < 5 || isNaN(costUgx)) {
-  return showPurchaseError("Cost must be numeric and at least 5 digits.");
-  }
-  if (dealerName.length < 2 || !alphanumRegex.test(dealerName)) {
-  return showPurchaseError("Dealer name must be at least 2 characters and alphanumeric.");
-  }
-  if (!branchName) {
-  return showPurchaseError("Branch must be selected.");
-  }
-  if (!phoneRegex.test(dealerContact)) {
-  return showPurchaseError("Invalid contact. Use format +256XXXXXXXXX.");
-  }
-  if (sellingPrice.length < 1 || isNaN(sellingPrice)) {
-  return showPurchaseError("Selling price must be numeric.");
-  }
-  const row = document.createElement("tr");
-  row.innerHTML = `
-  <td>${produceName}</td>
-  <td>${produceType}</td>
-  <td>${purchaseDate}</td>
-  <td>${produceTime}</td>
-  <td>${tonnageKgs}</td>
-  <td>${costUgx}</td>
-  <td>${dealerName}</td>
-  <td>${branchName}</td>
-  <td>${dealerContact}</td>
-  <td>${sellingPrice}</td>
-  `;
-  purchaseTableBody.insertBefore(row, purchaseTableBody.firstChild);
-  closePurchaseForm();
-  });
-  function showPurchaseError(message) {
-  purchaseError.textContent = message;
-  }
-  function goBack() {
-  window.history.back();
-  }
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Purchase Dashboard
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 20px;
+      }
+
+      .container button {
+        background-color: #1abc9c;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 20px;
+      }
+
+      .container button:hover {
+        background-color: #16a085;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      .modal.show {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .modal-content {
+        background-color: #fff;
+        margin: 5% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 550px;
+        border-radius: 8px;
+        position: relative;
+      }
+
+      .modal-content form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+      }
+
+      .modal-content input,
+      .modal-content select {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      .modal-content button {
+        background-color: #1abc9c;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .modal-content .button-row {
+        display: flex;
+        gap: 10px;
+      }
+
+      .purchaseTable table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      .purchaseTable th, .purchaseTable td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+      }
+
+      .purchaseTable th {
+        background-color: #2c3e50;
+        color: white;
+      }
+
+      .action-btn {
+        padding: 5px 10px;
+        margin: 0 2px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 0.9em;
+      }
+
+      .edit-btn {
+        background-color: #3498db;
+        color: white;
+      }
+
+      .delete-btn {
+        background-color: #e74c3c;
+        color: white;
+      }
+
+      .error {
+        color: red;
+        margin-top: 10px;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+  body
+    .container
+      button(type='button' onclick='openPurchaseForm()') Record Purchase
+      h1 Purchase Records
+
+      // Modal Overlay Form
+      .modal#purchaseModal
+        .modal-content
+          form#purchaseForm
+            input#produceName(type='text' name='produceName' placeholder='Name of Produce' required)
+            input#produceType(type='text' name='produceType' placeholder='Type of Produce' required)
+            input#purchaseDate(type='date' name='date' required)
+            input#tonnageKgs(type='text' name='tonnage' placeholder='Tonnage in Kgs' required)
+            input#costUgx(type='text' name='cost' placeholder='Cost (UGX)' required)
+            input#dealerName(type='text' name='dealerName' placeholder='Dealer Name' required)
+            select#branchName(name='branchName' required)
+              option(value='') -- Select Branch --
+              option(value='maganjjo') Maganjjo
+              option(value='mattuga') Matugga
+            input#dealerContact(type='text' name='contact' placeholder='Dealer Contact (e.g. +256712345678)' required)
+            input#sellingPrice(type='text' name='sellingPrice' placeholder='Price to be Sold At' required)
+            .button-row
+              button(type='submit') Submit
+              button(type='button' onclick='closePurchaseForm()') Cancel
+            p#purchaseErrorMsg.error
+
+      .purchaseTable
+        table#salesTable
+          thead
+            tr
+              th Produce
+              th Type
+              th Date
+              th Tonnage (kg)
+              th Cost (UGX)
+              th Dealer
+              th Branch
+              th Contact
+              th Selling Price
+              th Actions
+          tbody
+
+      br
+      br
+      button(type='button' onclick='goBack()') Preview
+
+    script(src='/js/purchase.js')

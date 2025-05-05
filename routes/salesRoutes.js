@@ -1,42 +1,97 @@
-// routes/saleRoutes.js
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Sale =require('../models/Sale'); // Adjust the path to your Sale model
+const Sale = require("../models/Sale");
 
+// Middleware to check if user is logged in
+function isAuthenticated(req, res, next) {
+  if (!req.session.user) {
+    return res.redirect("/login");
+  }
+  next();
+}
 
-// GET route for sales page
-router.get('/sales', async(req, res) => {
-    if (!req.session.user) {
-        return res.redirect('/login'); // Redirect to login if user is not authenticated
-    }
-    const sales = await Sale.find().sort({ date: -1}); // Fetch all sales from the database
-  res.render('sales', {sales}); // this should match the name of your Pug view file: views/sales.pug
+// Render sales page
+router.get("/sales", isAuthenticated, async (req, res) => {
+  try {
+    const sales = await Sale.find().sort({ dateTime: -1 });
+    res.render("sales", { sales });
+  } catch (err) {
+    console.error("Error fetching sales:", err);
+    res.status(500).send("Failed to load sales");
+  }
 });
 
+// API route to fetch all sales (for AJAX)
+router.get("/api/sales", async (req, res) => {
+  try {
+    const sales = await Sale.find().sort({ dateTime: -1 });
+    res.json(sales);
+  } catch (err) {
+    console.error("API error fetching sales:", err);
+    res.status(500).json({ error: "Failed to fetch sales" });
+  }
+});
 
-// POST route to add a new sale
-router.post('/sales', async (req, res) => {
-    const { productName, quantity, price } = req.body;
-    const total = tonnage * amount; // Calculate total price
+// Create new sale
+router.post("/sales", async (req, res) => {
+  const { produceName, tonnage, amount, buyerName, agentName, branchName } = req.body;
 
-    // Validate input
+  if (!produceName || !tonnage || !amount || !buyerName || !agentName || !branchName) {
+    return res.status(400).send("Missing required fields");
+  }
+
+  try {
     const newSale = new Sale({
-        productName,
-        tonnage,
-        amount,
-        buyerName, 
-        dateTime: new Date(), // Use current date and time
-        agentName,
-        branchName,
+      produceName,
+      tonnage,
+      amount,
+      buyerName,
+      agentName,
+      branchName,
     });
 
-    try {
-    await newSale.save(); // Save the new sale to the database
-    res.redirect('/sales'); // Redirect back to the sales page
-    
-    } catch (err) {
-        res.status(500).send(' Error recording sale'); // Handle error appropriately
-    }
+    await newSale.save();
+    res.status(201).json({ message: "Sale recorded", sale: newSale });
+  } catch (err) {
+    console.error("Error saving sale:", err);
+    res.status(500).send("Error recording sale");
+  }
+});
+
+// Update an existing sale
+router.put("/sales/:id", async (req, res) => {
+  const { id } = req.params;
+  const { produceName, tonnage, amount, buyerName, agentName, branchName } = req.body;
+
+  try {
+    const updatedSale = await Sale.findByIdAndUpdate(
+      id,
+      { produceName, tonnage, amount, buyerName, agentName, branchName },
+      { new: true }
+    );
+
+    if (!updatedSale) return res.status(404).send("Sale not found");
+
+    res.json({ message: "Sale updated", sale: updatedSale });
+  } catch (err) {
+    console.error("Error updating sale:", err);
+    res.status(500).send("Error updating sale");
+  }
+});
+
+// Delete a sale
+router.delete("/sales/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const deleted = await Sale.findByIdAndDelete(id);
+    if (!deleted) return res.status(404).send("Sale not found");
+
+    res.json({ message: "Sale deleted" });
+  } catch (err) {
+    console.error("Error deleting sale:", err);
+    res.status(500).send("Error deleting sale");
+  }
 });
 
 module.exports = router;

@@ -10,7 +10,7 @@ header.header
   input.search-bar(type='text' placeholder='Search...')
 .dashboard
   aside.sidebar
-    h2 Admin Panel
+    h2 Hello #{user.userType} #{user.fullName}!
     ul#sidebar
       li
         i.fa-solid.fa-table-columns.icon
@@ -50,6 +50,6 @@ header.header
         h3 Users
         p Loading...
 footer
-  p &copy; Manager Dashboard
+  p &copy; Director Dashboard   karibu grocery limited
 script(src='js/admindash.js')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js' integrity='sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==' crossorigin='anonymous' referrerpolicy='no-referrer')

@@ -10,7 +10,7 @@ header.header
   input.search-bar(type='text' placeholder='Search...')
 .dashboard
   aside.sidebar
-    h2 Admin Panel
+    h2 Hello #{user.userType} #{user.fullName}!
     ul#sidebar
       li
         i.fa-solid.fa-table-columns.icon
@@ -29,19 +29,19 @@ header.header
         a(data-feature='logout') Logout
   main#content.main-content
     header.header
-      h1 Welcome, Director
+      h1 Welcome, to #{user.branch}
     section.stats
       #user-stat.stat-box
-        h3 Users
-        p 120
+        h3 Purchase
+        #44
       #user-stat.stat-box
         h3 Sales
         p $5,000
       #user-stat.stat-box
-        h3 Orders
+        h3 Users
         p 34
       #user-stat.stat-box
-        h3 Users
+        h3 Top Sale
         p Loading...
 footer
   p &copy; Sales Agent Dashboard

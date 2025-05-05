@@ -1,45 +1,55 @@
 doctype html
-head
-  meta(charset='UTF-8')
-  title Credit Sales Entry
-  link(rel='stylesheet' href='css/credit.css')
-.container
-  button(onclick='openForm()') Record Credit Sale
-  #salesForm.form-popup
-    h3 Register Credit Sale
-    form#creditSaleForm
-      input#buyerName(type='text' name='buyerName' placeholder='Name of Buyer' required='')
-      input#nationalId(type='text' name='nationalId' placeholder='National ID (e.g., CF1234567890ABCDE)' required='')
-      input#location(type='text' name='location' placeholder='Location' required='')
-      input#contacts(type='text' name='contact' placeholder='Contacts (e.g., +256712345678)' required='')
-      input#amountDue(type='text' name='amoutDue' placeholder='Amount Due (UGX)' required='')
-      input#salesAgent(type='text' name='saleAgent' placeholder='Sales Agent Name' required='')
-      input#dueDate(type='date' name='dueDate' required='')
-      input#produceName(type='text' name='produceName' placeholder='Produce Name' required='')
-      input#produceType(type='text' name='produceType' placeholder='Type of Produce' required='')
-      input#tonnage(type='text' name='tonnage' placeholder='Tonnage' required='')
-      input#dispatchDate(type='date' name='dispatchDate' required='')
-      button(type='submit') Save
-      button(type='button' onclick='closeForm()') Cancel
-      p#errorMsg.error
-table#salesTable
-  thead
-    tr
-      th Buyer
-      th National ID
-      th Location
-      th Contacts
-      th Amount Due
-      th Sales Agent
-      th Due Date
-      th Produce
-      th Type
-      th Tonnage
-      th Dispatch Date
-      th Actions
-  tbody
-    // Sales records appear here
-br
-br
-button(onclick='goBack()') Preview
-script(src='js/credit.js')
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Credit Sales Entry
+    link(rel='stylesheet' href='/css/credit.css')
+  body
+    .container
+      button#recordCreditBtn(type='button') Record Credit Sale
+      h1 Credit Records
+
+      // Modal Overlay Form
+      .modal#creditModal
+        .modal-content
+          form#creditForm
+            input#buyerName(type='text' name='buyerName' placeholder='Buyer Name' required)
+            input#nationalId(type='text' name='nationalId' placeholder='Ntional ID Number' required)
+            input#location(type='text' name='location' required placeholder='Location')
+            input#contact(type='text' name='contact' placeholder='Contact' required)
+            input#amountDue(type='number' name='amountDue' placeholder='Amount Due' required)
+            input#saleAgent(type='text' name='saleAgent' placeholder='Sale Agent' required)
+            input#dueDate(type='text' name='dueDate' required placeholder='Due Date')
+            input#produceName(type='text' name='produceName' placeholder='Produce Name' required)
+            input#produceType(type='text' name='produceType' placeholder='Produce Type' required)
+            input#tonnage(type='text' name='tonnage' placeholder='Tonnage' required)
+            input#dispatchDate(type='text' name='dispatchDate' placeholder='Dispatch Date' required)
+            .button-row
+              button(type='submit') Submit
+              button(type='button' onclick='closeCreditForm()') Cancel
+            p#creditErrorMsg.error
+
+      .creditTable
+        table#salesTable
+          thead
+            tr
+              th Buyers Name
+              th National ID
+              th Location 
+              th Contact
+              th Amount Due
+              th Sale Agent
+              th Due Date
+              th Produce Name
+              th Produce Type
+              th Tonnage 
+              th Dispatch Date
+              th Actions
+          tbody
+
+      br
+      br
+      button(type='button' onclick='goBack()') Preview
+
+    script(src='/js/credit.js')

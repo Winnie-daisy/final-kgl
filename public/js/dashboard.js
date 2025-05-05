@@ -11,16 +11,11 @@ const content = document.getElementById('content');
 const featureContent = {
    
     users: `
-        <h2>Users</h2>
-        <button>Add User</button>
-        <ul>
-            <li>Winnie (Admin)</li>
-            <li>John (Sales Agent)</li>
-        </ul>
+        
     `,
     logout: `
         <h2>Are you sure you want to logout?</h2>
-        <button>Logout</button>
+        <button >Logout</button>
     `
 };
 
