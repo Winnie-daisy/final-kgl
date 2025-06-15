@@ -5,13 +5,15 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-image: url('/img/background2.jpg') ;
+    background-image: url('../img/cereals.jpg');
     background-size: cover;
+    background-position: center;
   }
   
   .container {
     width: 400px;
     position: relative;
+    padding-top: 80px;
   }
   
   .form-container {
@@ -75,4 +77,61 @@ button:hover {
   .branch-input {
     display: none;
   }
-  
+
+/* New navigation bar styles */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #1abc9c;
+}
+
+.password-requirements {
+  margin-top: 5px;
+  font-size: 0.85em;
+  color: #666;
+}
+
+.requirement {
+  display: block;
+  margin-left: 10px;
+  color: #dc3545;
+}
+
+.requirement.valid {
+  color: #28a745;
+}

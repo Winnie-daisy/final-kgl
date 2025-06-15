@@ -1,11 +1,26 @@
 doctype html
-html
+html(lang='en')
   head
     meta(charset='UTF-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    title Sign Up / Sign In
-    link(rel='stylesheet' href='CSS/login.css')
+    title Sign Up / Sign In - Karibu Groceries
+    link(rel='stylesheet' href='/css/login.css')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css')
+  
   body
+    nav.navbar
+      .nav-container
+        a.nav-logo(href='/') 
+          i.fas.fa-store
+          |  Karibu Groceries
+        .nav-links
+          a.nav-link(href='/') 
+            i.fas.fa-home
+            |  Home
+          a.nav-link(href='/signin') 
+            i.fas.fa-sign-in-alt
+            |  Login
+
     .container
       .form-container
         // ✅ SIGN UP FORM
@@ -13,10 +28,10 @@ html
           h2 Sign Up
           .input-group
             label(for='fullName') Full Name
-            input#fullName(type='text', name='fullName' placeholder='Full Name' required)
+            input#fullName(type='text', name='fullName', placeholder='Full Name', required)
           .input-group
             label(for='email') Email
-            input#email(type='email', name='email' placeholder='Email' required)
+            input#email(type='email', name='email', placeholder='Email', required)
           .input-group
             label(for='userType') Type of User
             select#userType(name='userType' required)  
@@ -26,11 +41,15 @@ html
           .input-group.branch-input
             label(for='branch') Branch
             select#branch(name='branch' required)  
-              option(value='mattuga') Mattuga Branch
-              option(value='maganjjo') Maganjjo Branch 
+              option(value='Matugga') Matugga Branch
+              option(value='Maganjo') Maganjo Branch 
           .input-group
             label(for='password') Password
             input#password(type='password', name='password', placeholder='Password', required)
+            .password-requirements
+              small Password must:
+              small.requirement.length-req ▪ Be at least 6 characters long
+              small.requirement.number-req ▪ Contain at least one number
           button(type='submit') Sign Up
           p
             | Already have an account? 
@@ -50,4 +69,4 @@ html
             | Don&apos;t have an account? 
             span#showSignUp Sign Up
 
-    script(src='js/login.js')
+    script(src='/js/login.js')

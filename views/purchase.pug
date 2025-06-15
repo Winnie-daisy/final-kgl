@@ -147,22 +147,22 @@ html
             input#produceName(type='text' name='produceName' placeholder='Name of Produce' required)
             input#produceType(type='text' name='produceType' placeholder='Type of Produce' required)
             input#purchaseDate(type='date' name='date' required)
-            input#tonnageKgs(type='text' name='tonnage' placeholder='Tonnage in Kgs' required)
-            input#costUgx(type='text' name='cost' placeholder='Cost (UGX)' required)
+            input#tonnageKgs(type='number' name='tonnage' step='0.01' min='0' placeholder='Tonnage in Kgs' required)
+            input#costUgx(type='number' name='cost' min='0' placeholder='Cost (UGX)' required)
             input#dealerName(type='text' name='dealerName' placeholder='Dealer Name' required)
-            select#branchName(name='branchName' required)
-              option(value='') -- Select Branch --
-              option(value='maganjjo') Maganjjo
-              option(value='mattuga') Matugga
+            select#branch(name='branch' required)
+              option(value='') Select Branch
+              option(value='Matugga') Matugga
+              option(value='Maganjo') Maganjo
             input#dealerContact(type='text' name='contact' placeholder='Dealer Contact (e.g. +256712345678)' required)
-            input#sellingPrice(type='text' name='sellingPrice' placeholder='Price to be Sold At' required)
+            input#sellingPrice(type='number' name='sellingPrice' min='0' placeholder='Selling Price (UGX)' required)
             .button-row
               button(type='submit') Submit
               button(type='button' onclick='closePurchaseForm()') Cancel
             p#purchaseErrorMsg.error
 
       .purchaseTable
-        table#salesTable
+        table#purchaseTable
           thead
             tr
               th Produce
@@ -179,6 +179,6 @@ html
 
       br
       br
-      button(type='button' onclick='goBack()') Preview
+      button(type='button' onclick='goBack()') Back
 
     script(src='/js/purchase.js')

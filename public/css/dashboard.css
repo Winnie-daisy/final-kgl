@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     background-color: #f5f5f5;
-    background: linear-gradient(to right, #5a3f37, #2c7744);
+    background-image: url('../img/better.jpg');
   }
   
   header {

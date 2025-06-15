@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Dashboard</title>
+    <link rel="stylesheet" href="/css/purchase.css">
+</head>
+<body>
+    <div class="container">
+        <button type="button" onclick="openPurchaseForm()">Record Purchase</button>
+        <h1>Purchase Records</h1>
+
+        <div class="modal" id="purchaseModal">
+            <div class="modal-content">
+                <form id="purchaseForm">
+                    <input id="produceName" type="text" name="produceName" placeholder="Name of Produce" required>
+                    <input id="produceType" type="text" name="produceType" placeholder="Type of Produce" required>
+                    <input id="purchaseDate" type="date" name="date" required>
+                    <input id="tonnageKgs" type="number" name="tonnage" placeholder="Tonnage in Kgs" required>
+                    <input id="costUgx" type="number" name="cost" placeholder="Cost (UGX)" required>
+                    <input id="dealerName" type="text" name="dealerName" placeholder="Dealer Name" required>
+                    <select id="branch" name="branch" required>
+                        <option value="">Select Branch</option>
+                        <option value="Matugga">Matugga</option>
+                        <option value="Maganjo">Maganjo</option>
+                    </select>
+                    <input id="dealerContact" type="text" name="contact" placeholder="Dealer Contact" required>
+                    <input id="sellingPrice" type="number" name="sellingPrice" placeholder="Selling Price (UGX)" required>
+                    <div class="button-row">
+                        <button type="submit">Save</button>
+                        <button type="button" onclick="closePurchaseForm()">Cancel</button>
+                    </div>
+                    <p id="purchaseErrorMsg" class="error"></p>
+                </form>
+            </div>
+        </div>
+
+        <div class="purchaseTable">
+            <table id="purchaseTable">
+                <thead>
+                    <tr>
+                        <th>Produce Name</th>
+                        <th>Type</th>
+                        <th>Date</th>
+                        <th>Tonnage (kg)</th>
+                        <th>Cost (UGX)</th>
+                        <th>Dealer</th>
+                        <th>Branch</th>
+                        <th>Contact</th>
+                        <th>Selling Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="purchaseTableBody">
+                    <!-- Records will be added dynamically -->
+                </tbody>
+            </table>
+        </div>
+
+        <button type="button" onclick="goBack()">Preview</button>
+    </div>
+
+    <script src="/js/purchase.js"></script>
+</body>
+</html>

@@ -75,7 +75,7 @@ router.post(
       res.redirect("/salersdashRoutes");
    }
     else if (req.user.userType === "director"){
-    res.redirect("/admindashRoutes");
+    res.redirect("/admin/dashboard");
     }else {
    res.send("You do not have any role in the system")
 }

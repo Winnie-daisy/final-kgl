@@ -3,7 +3,7 @@ html
   head
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    title Sales
+    title Sales Dashboard
     link(rel='stylesheet', href='/css/sales.css')
   body
     .container
@@ -15,42 +15,55 @@ html
           tr
             th Produce Name
             th Tonnage (kg)
-            th Amount
-            th Buyer’s Name
+            th Amount Paid
+            th Buyer's Name
             th Date & Time
             th Agent Name
-            th Branch Name
+            th Branch
             th Actions
         tbody
 
       br
-      button(onclick='goBack()') Preview
+      button(onclick='goBack()') Back
 
-    // Sales Form Modal
-    #saleFormModal.modal(style='display:none')
+    #saleFormModal.modal
       .modal-content
         h2 Record Sale
         form#saleForm
           input(type='hidden', id='editingId')
-          label(for='produceName') Produce Name
-          input#produceName(type='text', name='produceName', required)
+          
+          div.form-group
+            label(for='produceName') Produce Name*
+            input#produceName(type='text', name='produceName', required)
+            div#stockInfo.stock-info
 
-          label(for='tonnage') Tonnage (kg)
-          input#tonnage(type='number', name='tonnage', required)
+          div.form-group
+            label(for='branch') Branch*
+            select#branch(name='branch', required)
+              option(value='') -- Select Branch --
+              option(value='Matugga') Matugga
+              option(value='Maganjo') Maganjo
 
-          label(for='amount') Amount
-          input#amount(type='number', name='amount', required)
+          div.form-group
+            label(for='tonnage') Tonnage (kg)*
+            input#tonnage(type='number', name='tonnage', required, min='0', step='0.01')
+            div#tonnageError.error-message Invalid tonnage amount
 
-          label(for='buyerName') Buyer's Name
-          input#buyerName(type='text', name='buyerName', required)
+          div.form-group
+            label(for='amountPaid') Amount Paid (UGX)*
+            input#amountPaid(type='number', name='amountPaid', required, min='0')
+            div#amountError.error-message Invalid amount
 
-          label(for='agentName') Agent Name
-          input#agentName(type='text', name='agentName', required)
+          div.form-group
+            label(for='buyerName') Buyer's Name*
+            input#buyerName(type='text', name='buyerName', required)
 
-          label(for='branchName') Branch Name
-          input#branchName(type='text', name='branchName', required)
+          div.form-group
+            label(for='agentName') Agent Name*
+            input#agentName(type='text', name='agentName', required)
 
-          button(type='submit') Save
-          button#cancelBtn(type='button') Cancel
+          div.form-actions
+            button(type='submit') Save
+            button#cancelBtn(type='button') Cancel
 
     script(src='/js/sales.js')

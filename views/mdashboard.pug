@@ -1,55 +1,64 @@
 doctype html
-head
-  meta(charset='UTF-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Manager Dashboard
-  link(rel='stylesheet' href='css/admindash.css')
-  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css' integrity='sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==' crossorigin='anonymous' referrerpolicy='no-referrer')
-header.header
-  h1 Karibu Grocery Limited
-  input.search-bar(type='text' placeholder='Search...')
-.dashboard
-  aside.sidebar
-    h2 Hello #{user.userType} #{user.fullName}!
-    ul#sidebar
-      li
-        i.fa-solid.fa-table-columns.icon
-        a(data-feature='dashboard') Dashboard
-      li
-        i.fa-solid.fa-users.icon
-        a(data-feature='users') Users
-      li
-        i.fa-solid.fa-wheat-awn-circle-exclamation.icon
-        a(href='/purchase') Purchase
-      li
-        i.fa-solid.fa-cart-shopping.icon
-        a(href='/sales') Sales
-      li
-        i.fa-solid.fa-scale-balanced.icon
-        a(href='/credit') Credit Sales
-      li
-        i.fa-solid.fa-gear.icon
-        a(data-feature='settings') Settings
-      li
-        i.fa-solid.fa-arrow-right-from-bracket.icon
-        a(data-feature='logout') Logout
-  main#content.main-content
-    header.header
-      h1 Welcome to #{user.branch} Dashboard
-    section.stats
-      #user-stat.stat-box
-        h3 Users
-        p 120
-      #user-stat.stat-box
-        h3 Sales
-        p $5,000
-      #user-stat.stat-box
-        h3 Orders
-        p 34
-      #user-stat.stat-box
-        h3 Users
-        p Loading...
-footer
-  p &copy; Manager Dashboard  karibu grocery limited
-script(src='js/admindash.js')
-script(src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js' integrity='sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==' crossorigin='anonymous' referrerpolicy='no-referrer')
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Manager Dashboard - Karibu Groceries
+    link(rel='stylesheet' href='/css/admindash.css')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css' integrity='sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==' crossorigin='anonymous' referrerpolicy='no-referrer')
+  
+  body
+    .dashboard
+      aside.sidebar
+        h2
+          i.fas.fa-store.icon
+          | Karibu Groceries
+        
+        h3.user-info Hello #{user && user.fullName || 'Manager'}!
+        
+        nav
+          ul#sidebar
+            li
+              i.fa-solid.fa-table-columns.icon
+              a(data-feature='dashboard') Dashboard
+            li
+              i.fa-solid.fa-users.icon
+              a(data-feature='users') Users
+            li
+              i.fa-solid.fa-wheat-awn-circle-exclamation.icon
+              a(href='/purchase') Purchase
+            li
+              i.fa-solid.fa-cart-shopping.icon
+              a(href='/sales') Sales
+            li
+              i.fa-solid.fa-scale-balanced.icon
+              a(href='/credit') Credit Sales
+            li
+              i.fa-solid.fa-gear.icon
+              a(data-feature='settings') Settings
+            li
+              i.fa-solid.fa-arrow-right-from-bracket.icon
+              a(href='#' data-feature='logout') Logout
+
+      main#content.main-content
+        header.header
+          h1 Dashboard Overview
+          .search-container
+            input.search-bar(type='text' placeholder='Search...')
+            i.fas.fa-search.search-icon
+        
+        section.stats
+          #stock-alerts.stat-box
+            h3 Stock Alerts
+            p#stockAlertsText Loading...
+          #sales-stat.stat-box
+            h3 Sales Overview
+            p#salesText Loading...
+          #stock-stat.stat-box
+            h3 Stock Overview
+            p#stockText Loading...
+
+    footer
+      p &copy; #{new Date().getFullYear()} Karibu Groceries Limited. All rights reserved.
+
+    script(src='/js/dashboard.js')

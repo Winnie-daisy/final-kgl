@@ -20,18 +20,18 @@ html
             input#contact(type='text' name='contact' placeholder='Contact' required)
             input#amountDue(type='number' name='amountDue' placeholder='Amount Due' required)
             input#saleAgent(type='text' name='saleAgent' placeholder='Sale Agent' required)
-            input#dueDate(type='text' name='dueDate' required placeholder='Due Date')
+            input#dueDate(type='date' name='dueDate' required placeholder='Due Date')
             input#produceName(type='text' name='produceName' placeholder='Produce Name' required)
-            input#produceType(type='text' name='produceType' placeholder='Produce Type' required)
+            input#branch(type='text' name='branch' placeholder='branch' required)
             input#tonnage(type='text' name='tonnage' placeholder='Tonnage' required)
-            input#dispatchDate(type='text' name='dispatchDate' placeholder='Dispatch Date' required)
+            input#dispatchDate(type='date' name='dispatchDate' placeholder='Dispatch Date' required)
             .button-row
               button(type='submit') Submit
               button(type='button' onclick='closeCreditForm()') Cancel
             p#creditErrorMsg.error
 
       .creditTable
-        table#salesTable
+        table#creditTable
           thead
             tr
               th Buyers Name
@@ -42,7 +42,7 @@ html
               th Sale Agent
               th Due Date
               th Produce Name
-              th Produce Type
+              th Branch
               th Tonnage 
               th Dispatch Date
               th Actions
@@ -50,6 +50,6 @@ html
 
       br
       br
-      button(type='button' onclick='goBack()') Preview
+      button(type='button' onclick='goBack()') Back
 
     script(src='/js/credit.js')
